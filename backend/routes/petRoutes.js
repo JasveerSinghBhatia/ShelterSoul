@@ -6,14 +6,17 @@ const {
   getPetById,
   updatePet,
   deletePet,
+  searchPets,
 } = require("../Controllers/petController");
 const { protect } = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
 //  Public routes
+router.get("/search", searchPets); // Search and filter pets
 router.get("/", getPets);       // Get all pets
 router.get("/:id", getPetById); // Get single pet
+
 
 // Protected routes (only shelters)
 router.post("/", protect, addPet);     // Add pet

@@ -92,4 +92,23 @@ const deletePet = async (req, res) => {
   }
 };
 
-module.exports = { addPet, getPets, getPetById, updatePet, deletePet };
+// Search and filter pets (public)
+const searchPets = async (req, res) => {
+  try {
+    const { breed, age, adopted } = req.query;
+
+    let query = {};
+
+    if (breed) query.breed = { $regex: breed, $options: "i" }; // case-insensitive
+    if (age) query.age = age;
+    if (adopted !== undefined) query.adopted = adopted === "true";
+
+    const pets = await Pet.find(query).populate("shelter", "name email");
+    res.json(pets);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+module.exports = { addPet, getPets, getPetById, updatePet, deletePet ,searchPets };
