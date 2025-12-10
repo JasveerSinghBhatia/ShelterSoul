@@ -11,8 +11,6 @@ const userSchema = mongoose.Schema(
       enum: ["adopter", "shelter", "admin"],
       default: "adopter",
     },
-    // For shelters that need admin approval
-    isApproved: { type: Boolean, default: false },
     favorites: [
       {
         type: mongoose.Schema.Types.ObjectId,

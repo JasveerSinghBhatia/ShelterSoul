@@ -15,10 +15,7 @@ const addFavorite = async (req, res) => {
     if (!pet) return res.status(404).json({ message: "Pet not found" });
 
     // Prevent duplicate favorites
-    const alreadyFavorite = req.user.favorites.some(
-      (id) => id.toString() === petId.toString()
-    );
-    if (alreadyFavorite) {
+    if (req.user.favorites.includes(petId)) {
       return res.status(400).json({ message: "Pet already in favorites" });
     }
 
