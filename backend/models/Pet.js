@@ -8,12 +8,13 @@ const petSchema = mongoose.Schema(
     age: { type: Number, required: true },
     breed: { type: String, required: true },
     description: { type: String },
-    shelter: { 
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: "User",  // linked to User model
-      required: true 
+    shelter: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", // linked to User model
+      required: true,
     },
     adopted: { type: Boolean, default: false }, // adoption status
+    images: [{ type: String }], // array of image URLs/paths
   },
   { timestamps: true }
 );

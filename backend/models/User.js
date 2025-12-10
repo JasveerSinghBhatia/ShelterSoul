@@ -11,6 +11,12 @@ const userSchema = mongoose.Schema(
       enum: ["adopter", "shelter", "admin"],
       default: "adopter",
     },
+    favorites: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Pet", // reference to Pet model
+      },
+    ]
   },
   { timestamps: true }
 );

@@ -12,7 +12,16 @@ const addPet = async (req, res) => {
 
     // Validate input
     if (!name || !age || !breed) {
-      return res.status(400).json({ message: "Please provide all required fields" });
+      return res
+        .status(400)
+        .json({ message: "Please provide all required fields" });
+    }
+
+    // handle uploaded files (if any) - req.files is an array when using upload.array
+    let images = [];
+    if (req.files && req.files.length > 0) {
+      // store accessible URLs/paths, e.g. /uploads/<filename>
+      images = req.files.map((f) => `/uploads/${f.filename}`);
     }
 
     const pet = await Pet.create({
@@ -21,11 +30,19 @@ const addPet = async (req, res) => {
       breed,
       description,
       shelter: req.user._id, // shelter who added this pet
+      images,
     });
 
     res.status(201).json(pet);
   } catch (error) {
     console.error("Error in addPet:", error.message);
+    // if Multer error, send readable message
+    if (error.code && error.code.startsWith("LIMIT_")) {
+      return res.status(400).json({ message: error.message });
+    }
+    if (error.name === "MulterError") {
+      return res.status(400).json({ message: error.message });
+    }
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -43,7 +60,10 @@ const getPets = async (req, res) => {
 //  Get single pet by ID
 const getPetById = async (req, res) => {
   try {
-    const pet = await Pet.findById(req.params.id).populate("shelter", "name email");
+    const pet = await Pet.findById(req.params.id).populate(
+      "shelter",
+      "name email"
+    );
     if (!pet) return res.status(404).json({ message: "Pet not found" });
     res.json(pet);
   } catch (error) {
@@ -110,5 +130,11 @@ const searchPets = async (req, res) => {
   }
 };
 
-
-module.exports = { addPet, getPets, getPetById, updatePet, deletePet ,searchPets };
+module.exports = {
+  addPet,
+  getPets,
+  getPetById,
+  updatePet,
+  deletePet,
+  searchPets,
+};
