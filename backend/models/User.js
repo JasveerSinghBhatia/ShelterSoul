@@ -16,7 +16,8 @@ const userSchema = mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: "Pet", // reference to Pet model
       },
-    ]
+    ],
+    isApproved: { type: Boolean, default: false }, // For shelter approval by admin
   },
   { timestamps: true }
 );

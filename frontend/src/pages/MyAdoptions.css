@@ -1,0 +1,139 @@
+.my-adoptions-page {
+  min-height: 80vh;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.adoptions-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.adoptions-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.adoptions-header p {
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.adoptions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.adoption-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.adoption-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.adoption-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.adoption-header h3 a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.adoption-header h3 a:hover {
+  text-decoration: underline;
+}
+
+.pet-breed {
+  color: #666;
+  margin-top: 0.5rem;
+}
+
+.status-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.status-pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status-approved {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-rejected {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.adoption-info {
+  color: #666;
+}
+
+.adoption-message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.adoption-message strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.adoption-message p {
+  color: #666;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.adoption-date {
+  margin-bottom: 0.5rem;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.adoption-note {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #e7f3ff;
+  border-radius: 8px;
+  color: #0066cc;
+  font-weight: 500;
+}
+
+.no-adoptions,
+.loading,
+.error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+  color: #666;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.no-adoptions p {
+  margin-bottom: 2rem;
+}
