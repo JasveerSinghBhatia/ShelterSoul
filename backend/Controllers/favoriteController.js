@@ -47,7 +47,7 @@ const removeFavorite = async (req, res) => {
   }
 };
 
-// Get adopter’s favorite pets
+// Get adopter's favorite pets
 const getFavorites = async (req, res) => {
   try {
     if (req.user.role !== "adopter") {

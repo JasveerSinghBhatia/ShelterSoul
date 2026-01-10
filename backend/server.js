@@ -30,7 +30,7 @@ app.use("/api/auth", authRoutes);  // Authentication routes
 app.use("/api/pets", petRoutes); // Pet management routes
 app.use("/api/adoptions", adoptionRoutes); //Adoption routes
 app.use("/api/admin", adminRoutes); // Admin routes
-app.use("/api/favorites", favoriteRoutes); // register
+app.use("/api/favorites", favoriteRoutes); // Favorites routes
 
 //Health check route
 app.get("/", (req, res) => {

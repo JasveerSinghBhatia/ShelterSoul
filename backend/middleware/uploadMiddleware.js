@@ -2,9 +2,6 @@
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
-const cloudinary = require("cloudinary").v2;
-
 
 // ensure uploads directory exists
 const uploadDir = path.join(__dirname, "..", "uploads");
@@ -42,7 +39,5 @@ const upload = multer({
   fileFilter,
   limits: { fileSize: 5 * 1024 * 1024 } // limit 5MB per file
 });
-
-
 
 module.exports = upload;
